@@ -11,7 +11,7 @@ iphone:
   sdk: iphoneos8.3
   provisionprofile:
   codesignidentity: "iPhone Developer"
-  entitlements:
+  entitlements: ./production/Entitlements.plist
   BundleIdentifier: com.rhomobile.autocommonspec
   BundleURLScheme: autocommonspec
   extensions: ["nativeBridgeTest", "barcode", "sensor", "screenorientation", "audiocapture", "mediacapture"]
