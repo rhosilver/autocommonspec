@@ -34,4 +34,4 @@ wm:
 #capabilities:
 #- non_motorola_device
 
-#extensions: ["genPropBag", "logCapture"]
+extensions: ["rhoconnect-client", "rhoconnect-push"]
