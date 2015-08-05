@@ -36,7 +36,7 @@ window.addEventListener('DOMContentLoaded', hardwareKeysTest.loadEvent);
 
 hardwareKeysTest.simulateKeyPress = function(keyValue)
 {
-	Rho.Instrumentation.simulate_key_event_code(keyValue);
+//	Rho.Instrumentation.simulate_key_event_code(keyValue);
 };
 
 ///////////////////////////////////////////////////////////////////////////
