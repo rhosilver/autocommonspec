@@ -3328,10 +3328,10 @@ var getApplicableProperties = function (objScnType){
 	var finalSCNObj = [];
 	
 	//Consumer Android
-	if(isAndroid)
+/*	if(isAndroid)
 	{
 		return;
-	}
+	}*/
 
 	for (var i = 0; i < arr_scanner_property.length ; i++){
 

@@ -25,10 +25,10 @@ if(barcodeNotSupportedDevices.indexOf(Rho.System.deviceName) == -1){
 
 		(function(enumObject,arrScanner){
 			
-			if(isAndroid)
+/*			if(isAndroid)
 			{
 				return;
-			}
+			}*/
 	
 			var scnname = enumObject.getProperty('friendlyName');
 			var scnid = enumObject.getProperty('ID');
