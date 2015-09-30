@@ -23,6 +23,7 @@ symbian:
 android:
   version: 4.2.2
   extensions: ["emdk3-manager", "barcode", "screenorientation", "cardreader", "indicators", "sensor", "websocket", "eventsource", "audiocapture", 'screenorientation', "mediacapture"]
+  abis: [x86]
   capabilities:
   - native_browser
 wm:
