@@ -22,6 +22,7 @@ symbian:
   uid: '0xe1a1ef92'
 android:
   version: 4.2.2
+  abis: [arm,x86]
   extensions: ["emdk3-manager", "barcode", "screenorientation", "cardreader", "indicators", "sensor", "websocket", "eventsource", "audiocapture", 'screenorientation', "mediacapture"]
   capabilities:
   - native_browser
