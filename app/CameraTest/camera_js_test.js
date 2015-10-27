@@ -320,6 +320,14 @@ var arr_camera_property = [
 	expectedResult	:	"image"
 },
 {
+	testName		:	"Set outputFormat :imagePath | imagePath",
+	propertyName	:	"outputFormat",
+	cameraTypes		:	"All",
+	OSTypes			:	"All",
+	propertyValue	:	"imagePath",
+	expectedResult	:	"imagePath"
+},
+{
 	testName		:	"Set previewHeight :0 | 0",
 	propertyName	:	"previewHeight",
 	cameraTypes		:	"All",

@@ -50,7 +50,9 @@ describe("Camera JS API Test", function() {
 						expect(defaultobj.compressionFormat).toEqual('jpg');
 						//expect(defaultobj.desiredHeight).toBeGreaterThan(0);
 						//expect(defaultobj.desiredWidth).toBeGreaterThan(0);
-						expect(defaultobj.outputFormat).toEqual('image');
+						if(isWindowsMobilePlatform() || isApplePlatform()){
+							expect(defaultobj.outputFormat).toEqual('imagePath');
+						}
 					});
 				});
 				it("Check values of all read only property |", function() {
@@ -98,7 +100,7 @@ describe("Camera JS API Test", function() {
 					    capturestatus = false;
 					});
 
-					var data1 = [{"compressionFormat":"png"}, {"compressionFormat":"jpg"}, {"outputFormat":"image"}, {"outputFormat":"dataUri"}, 
+					var data1 = [{"compressionFormat":"png"}, {"compressionFormat":"jpg"}, {"outputFormat":"image"}, {"outputFormat":"imagePath"}, {"outputFormat":"dataUri"}, 
 					{"aimMode":"off"}, {"flashMode":"off"}];
 
 					for(i=0 ; i<data1.length ; i++ ){
@@ -394,7 +396,7 @@ describe("Camera JS API Test", function() {
 				});
 				it("Call getProperties() without callback |" + camtype, function() {
 					    //enumObject.clearAllProperties();
-					    enumObject.setProperties({'compressionFormat':'png','desiredHeight':640,'outputFormat':'dataUri'});
+					    enumObject.setProperties({'compressionFormat':'png','desiredHeight':640,'outputFormat':'imagePath'});
 						var data = enumObject.getProperties(['compressionFormat','desiredHeight','outputFormat']);
 						getpropertiesdata = JSON.stringify(data);
 						if(isApplePlatform()){
@@ -403,7 +405,7 @@ describe("Camera JS API Test", function() {
 							//expect(getpropertiesdata).toContain('jpg'); //png invalid for other platform. inalid value sets in android, hence removing.
 						};
 						//expect(getpropertiesdata).toContain('640');
-						expect(getpropertiesdata).toContain('dataUri');						
+						expect(getpropertiesdata).toContain('imagePath');
 				});
 				it("Call getProperty() with sync callback and property |" + camtype, function() {
 					runs(function() {  									    
@@ -656,6 +658,27 @@ describe("Camera JS API Test", function() {
 					expect(data).toEqual("image");
 			        expect(data).toEqual(Rho.Camera.OUTPUT_FORMAT_IMAGE);
 				});
+				if(isWindowsMobilePlatform() || isApplePlatform()){
+					it("Should set outputFormat to OUTPUT_FORMAT_IMAGE_PATH using direct calling method", function() {
+						enumObject.outputFormat = Rho.Camera.OUTPUT_FORMAT_IMAGE_PATH;
+						expect(enumObject.outputFormat).toEqual("imagePath");
+						expect(enumObject.outputFormat).toEqual(Rho.Camera.OUTPUT_FORMAT_IMAGE_PATH);
+					});
+					it("Should set outputFormat to OUTPUT_FORMAT_IMAGE_PATH using setproperty calling method", function() {
+						enumObject.setProperty('outputFormat', Rho.Camera.OUTPUT_FORMAT_IMAGE_PATH);
+						expect(enumObject.outputFormat).toEqual("imagePath");
+						expect(enumObject.getProperty('outputFormat')).toEqual(Rho.Camera.OUTPUT_FORMAT_IMAGE_PATH);
+					});
+					it("Should set outputFormat to OUTPUT_FORMAT_IMAGE_PATH using setproperties calling method", function() {
+						Rho.Camera.setProperties({
+				            'outputFormat': Rho.Camera.OUTPUT_FORMAT_IMAGE_PATH
+				        });
+				        var data = enumObject.getProperties(['outputFormat']);
+				        data = data['outputFormat'];
+						expect(data).toEqual("imagePath");
+				        expect(data).toEqual(Rho.Camera.OUTPUT_FORMAT_IMAGE_PATH);
+					});
+				}
 				it("Should set outputFormat to OUTPUT_FORMAT_DATAURI using direct calling method", function() {
 					enumObject.outputFormat = Rho.Camera.OUTPUT_FORMAT_DATAURI;
 					expect(enumObject.outputFormat).toEqual("dataUri");
